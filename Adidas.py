@@ -11,7 +11,8 @@ chrome_options.add_argument('--no-sandbox')  # Solucionar problemas en contenedo
 chrome_options.add_argument('--remote-debugging-port=9222')  # Puerto para depuración
 
 # Especificar la ubicación binaria de Chromium (asegúrate de que esté instalada en esa ruta)
-chrome_options.binary_location = '/usr/bin/chromium'  # Ajusta esta ruta según el entorno
+chrome_options.binary_location = '/opt/chromium/chrome'
+  # Ajusta esta ruta según el entorno
 
 # Configuración del servicio de Selenium para ChromeDriver
 service = Service(ChromeDriverManager().install())
