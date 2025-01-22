@@ -2,6 +2,24 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+import shutil
+
+# Buscar en rutas comunes
+possible_paths = [
+    '/usr/bin/chromium',
+    '/usr/local/bin/chromium',
+    '/opt/chromium/chrome',
+    '/usr/lib/chromium'
+]
+
+# Buscar el binario
+for path in possible_paths:
+    if shutil.which(path):
+        print(f"Chromium encontrado en: {path}")
+        chrome_options.binary_location = path
+        break
+else:
+    print("No se encontró Chromium en las rutas comunes")
 
 # Configurar opciones de Chrome
 chrome_options = Options()
@@ -10,8 +28,7 @@ chrome_options.add_argument('--disable-gpu')  # Deshabilitar GPU (para evitar pr
 chrome_options.add_argument('--no-sandbox')  # Solucionar problemas en contenedores
 chrome_options.add_argument('--remote-debugging-port=9222')  # Puerto para depuración
 
-# Especificar la ubicación binaria de Chromium (asegúrate de que esté instalada en esa ruta)
-chrome_options.binary_location = '/opt/chromium/chrome'
+# Especificar la ubicación binaria de Chromium (asegúrate de que esté instalada en esa ruta
   # Ajusta esta ruta según el entorno
 
 # Configuración del servicio de Selenium para ChromeDriver
