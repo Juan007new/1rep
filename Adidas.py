@@ -103,6 +103,7 @@ def extract_product_info(product, driver):
     }
 
 def main():
+    driver=None
     try:
         driver = setup_driver()
         #url_base = 'https://www.adidas.pe/zapatillas-mujer?sale_percentage_es_pe=65'
