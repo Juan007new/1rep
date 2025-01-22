@@ -16,8 +16,11 @@ chrome_options.binary_location = '/usr/bin/chromium'  # Ajusta esta ruta según 
 # Configuración del servicio de Selenium para ChromeDriver
 service = Service(ChromeDriverManager().install())
 
+# Inicializar driver a None
+driver = None
+
 try:
-    # Iniciar el navegador Chrome
+    # Intentar iniciar el navegador Chrome
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # Verificar la conexión visitando una página web
@@ -29,5 +32,5 @@ try:
 except Exception as e:
     print(f"Ocurrió un error: {str(e)}")
 finally:
-    if driver:
+    if driver:  # Verificar que 'driver' esté inicializado antes de llamar a 'quit'
         driver.quit()  # Asegurarse de cerrar el navegador después de ejecutar
