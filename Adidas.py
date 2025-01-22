@@ -13,8 +13,8 @@ import urllib.parse
 
 def telegram_bot_sendtext(bot_message, image_url=None):
     """Envía un mensaje y una imagen opcional al bot de Telegram."""
-    #bot_token = '7693801036:AAF8V_3EA74x-hfXk2DpRoY6hm2-_x9fx44'
-    #bot_chatID = '1507772195'
+    #bot_token = 
+    #bot_chatID = 
     
     # Primero enviar la imagen si existe
     enviar_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
