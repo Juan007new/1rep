@@ -1,19 +1,22 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-# Configurar opciones para Chrome en modo headless
+# Configure Chrome options
 chrome_options = Options()
-chrome_options.add_argument("--headless")  # Ejecutar en modo headless
-chrome_options.add_argument("--disable-gpu")  # Deshabilitar GPU para headless
+chrome_options.add_argument("--headless")  # Run in headless mode
+chrome_options.add_argument("--disable-gpu")  # Disable GPU for headless mode
+chrome_options.add_argument("--no-sandbox")  # Avoid OS security model
+chrome_options.add_argument("--disable-dev-shm-usage")  # Fix limited resource issues
 
-# Inicializar el navegador
+# Initialize the browser
 driver = webdriver.Chrome(options=chrome_options)
 
-# Abrir Google
-driver.get("https://www.google.com")
+try:
+    # Open Google
+    driver.get("https://www.google.com")
+    # Print page title
+    print("Page title:", driver.title)
 
-# Imprimir el título de la página
-print(driver.title)
-
-# Cerrar el navegador
-driver.quit()
+finally:
+    # Close the browser
+    driver.quit()
