@@ -1,9 +1,16 @@
 services:
   - type: web
-    name: selenium-app
-    env: python
+    name: adidas-selenium
+    runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python Adidas.py
+    autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.11
+    # Add Chrome dependencies
+    buildPhase:
+      commands:
+        - apt-get update
+        - apt-get install -y chromium-driver chromium-browser
